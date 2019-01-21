@@ -6,7 +6,6 @@ var gameData = {
   goldPerClickCost: 10,
   goldPerWorkersCost: 100,
 }
-var check = 0
 
 function mineGold() {
   gameData.gold += gameData.goldPerClick
@@ -32,9 +31,8 @@ function buyWorkers(){
 	gameData.goldPerWorkersCost *= 1.5
 	document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
 	document.getElementById("perWorkersUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " + gameData.workers + ") Cost: " + gameData.goldPerWorkersCost + " Gold"
-	if(check == 0){
+	if(gameData.workers == 1){
 		startWorkers()
-		check++
 	}
 
 	}
