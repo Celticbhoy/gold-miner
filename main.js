@@ -2,19 +2,18 @@ var gameData = {
   gold: 0,
   workers: 0,
   goldPerClick: 1,
+  goldPerWorkers: 1,
   goldPerClickCost: 10,
-  goldPerWorkerCost: 100
+  goldPerWorkersCost: 100,
 }
+var check = 0
 
 function mineGold() {
   gameData.gold += gameData.goldPerClick
   document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
 }
 
-function mineWorkers(){
-	gameData.gold += gameData.workers
-	document.getElementById("goldMined").innerHTML = gameData.gold + "Gold Mined"
-}
+
 
 function buyGoldPerClick() {
   if (gameData.gold >= gameData.goldPerClickCost) {
@@ -27,20 +26,35 @@ function buyGoldPerClick() {
 }
 
 function buyWorkers(){
-	if(gameData.gold >= gameData.goldPerWorkerCost){
-		gameData.gold -= gameData.goldPerWorkerCost
-		gameData.workers += 1
-		gameData.goldPerWorkerCost *= 1.1
-		document.getElementById("goldMined").innerHTML = gameData.gold + "Gold Mined"
-		document.getElementById("perWorkerUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " gameData.workers + ") Cost:" gameData.goldPerWorkerCost + "Gold"
+	if (gameData.gold >= gameData.goldPerWorkersCost){
+	gameData.gold -= gameData.goldPerWorkersCost
+	gameData.workers += 1
+	gameData.goldPerWorkersCost *= 1.5
+	document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+	document.getElementById("perWorkersUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " + gameData.workers + ") Cost: " + gameData.goldPerWorkersCost + " Gold"
+	if(check == 0){
+		startWorkers()
+		check++
+	}
+
 	}
 
 }
 
+function mineWorkers(){
+	gameData.gold += gameData.workers
+	document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+}
+
+function startWorkers(){
 var mainGameLoop = window.setInterval(function() {
-  mineWorkers()
+ mineWorkers()
 }, 1000)
 
+}
+
+
+/*
 var saveGameLoop = window.setInterval(function() {
 	localStorage.setItem('goldMinerSave', JSON.stringify(gameData))
 }, 1500)
@@ -50,4 +64,4 @@ var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"))
 if(saveGame !== null){
 	gameData = saveGame
 }
-
+*/
