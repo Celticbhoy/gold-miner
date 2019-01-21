@@ -70,4 +70,5 @@ var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"))
 
 if(saveGame !== null){
 	gameData = saveGame
+	startWorkers()
 }
