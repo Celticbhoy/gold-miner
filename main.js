@@ -1,12 +1,19 @@
 var gameData = {
   gold: 0,
+  workers: 0,
   goldPerClick: 1,
-  goldPerClickCost: 10
+  goldPerClickCost: 10,
+  goldPerWorkerCost: 100
 }
 
 function mineGold() {
   gameData.gold += gameData.goldPerClick
   document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+}
+
+function mineWorkers(){
+	gameData.gold += gameData.workers
+	document.getElementById("goldMined").innerHTML = gameData.gold + "Gold Mined"
 }
 
 function buyGoldPerClick() {
@@ -19,8 +26,19 @@ function buyGoldPerClick() {
   }
 }
 
+function buyWorkers(){
+	if(gameData.gold >= gameData.goldPerWorkerCost){
+		gameData.gold -= gameData.goldPerWorkerCost
+		gameData.workers += 1
+		gameData.goldPerWorkerCost *= 1.1
+		document.getElementById("goldMined").innerHTML = gameData.gold + "Gold Mined"
+		document.getElementById("perWorkerUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " gameData.workers + ") Cost:" gameData.goldPerWorkerCost + "Gold"
+	}
+
+}
+
 var mainGameLoop = window.setInterval(function() {
-  mineGold()
+  mineWorkers()
 }, 1000)
 
 var saveGameLoop = window.setInterval(function() {
