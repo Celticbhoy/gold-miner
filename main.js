@@ -1,7 +1,3 @@
-if(saveGame !== null){
-	gameData = saveGame
-}
-
 var gameData = {
   gold: 0,
   workers: 0,
@@ -71,3 +67,7 @@ var saveGameLoop = window.setInterval(function() {
 }, 1500)
 
 var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"))
+
+if(saveGame !== null){
+	gameData = saveGame
+}
