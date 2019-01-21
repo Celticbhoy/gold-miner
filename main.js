@@ -53,8 +53,6 @@ var mainGameLoop = window.setInterval(function() {
 
 }
 
-
-/*
 var saveGameLoop = window.setInterval(function() {
 	localStorage.setItem('goldMinerSave', JSON.stringify(gameData))
 }, 1500)
@@ -64,4 +62,4 @@ var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"))
 if(saveGame !== null){
 	gameData = saveGame
 }
-*/
+
