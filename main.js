@@ -19,7 +19,7 @@ function mineGold() {
 
 
 function buyGoldPerClick() {
-  if (gameData.gold >= gameData.goldPerClickCost) {
+if (gameData.gold >= gameData.goldPerClickCost) {
     gameData.gold -= gameData.goldPerClickCost
     gameData.goldPerClick += 1
     gameData.goldPerClickCost *= 2
@@ -30,11 +30,11 @@ function buyGoldPerClick() {
 
 function buyWorkers(){
 	if (gameData.gold >= gameData.goldPerWorkersCost){
-	gameData.gold -= gameData.goldPerWorkersCost
-	gameData.workers += 1
-	gameData.goldPerWorkersCost *= 1.5
-	document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
-	document.getElementById("perWorkersUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " + gameData.workers + ") Cost: " + gameData.goldPerWorkersCost + " Gold"
+		gameData.gold -= gameData.goldPerWorkersCost
+		gameData.workers += 1
+		gameData.goldPerWorkersCost *= 1.5
+		document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+		document.getElementById("perWorkersUpgrade").innerHTML = "Hire a Worker to mine for you (Currently " + gameData.workers + ") Cost: " + gameData.goldPerWorkersCost + " Gold"
 	if(gameData.workers == 1){
 		startWorkers()
 	}
@@ -46,6 +46,17 @@ function buyWorkers(){
 function mineWorkers(){
 	gameData.gold += gameData.workers
 	document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+}
+
+function buyWorkersUpgrades(){
+	if(gameData.gold >= gameData.goldPerWorkersUpgrade){
+		gameData.gold -= gameData.goldPerWorkersUpgrade
+		gameData.goldPerWorkers += 1
+		gameData.goldPerWorkersUpgrade *= 2.5
+		document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined"
+		document.getElementById("perWorkersToolUpgrade").innerHTML = "Buy your workers better Tools (Currently " + gameData.goldPerWorkers + ") Cost: " + gameData.goldPerWorkersUpgrade + " Gold"
+
+	}
 }
 
 function startWorkers(){
