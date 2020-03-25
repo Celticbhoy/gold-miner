@@ -1,5 +1,5 @@
 var gameData = {
-  gold: NULL,
+  gold: 1,
   workers: 0,
   goldPerClick: 1,
   goldPerWorkers: 1,
